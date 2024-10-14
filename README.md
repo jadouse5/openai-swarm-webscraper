@@ -2,6 +2,8 @@
 
 This project implements a multi-agent system that performs web scraping, content analysis, and summary generation using OpenAI's **Swarm framework**. The system automates the extraction and processing of information from websites, making it ideal for applications like content aggregation, market analysis, and research automation.
 
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/c26y9df2m946k0xf0w4c.png)
+
 ---
 
 ## Table of Contents
