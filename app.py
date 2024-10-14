@@ -3,14 +3,24 @@ from swarm import Swarm, Agent
 from bs4 import BeautifulSoup
 import requests
 from dotenv import load_dotenv
-import sys
 import os
 
-# Load environment variables from .env file
+# Load environment variables from .env file if available
 load_dotenv()
 
+# Function to set OpenAI API key dynamically in the session state
+def set_openai_api_key():
+    api_key_input = st.text_input("Enter your OpenAI API Key", type="password")
+    if api_key_input:
+        os.environ['OPENAI_API_KEY'] = api_key_input
+        st.success("OpenAI API Key set successfully!")
+    else:
+        st.warning("Please enter your OpenAI API Key to continue.")
+
+
 # Initialize the Swarm client
-client = Swarm()
+def initialize_swarm_client():
+    return Swarm()
 
 # Define the scraping function
 def scrape_website(url):
@@ -58,7 +68,7 @@ writer_agent = Agent(
 )
 
 # Orchestrate the workflow
-def orchestrate_workflow(url):
+def orchestrate_workflow(client, url):
     # Step 1: Scrape the website
     scrape_result = client.run(
         agent=scraper_agent,
@@ -91,21 +101,32 @@ def orchestrate_workflow(url):
 st.title("🔍 OpenAI SWARM Web Scraping and Content Analysis with Multi-Agent System")
 st.caption("This app scrapes a website, analyzes the content, and generates a summary using a multi-agent system built on OpenAI's Swarm framework.")
 
-# Input field for the website URL
-url = st.text_input("Enter the URL of the website you want to scrape", placeholder="https://example.com")
+# Input for OpenAI API Key
+st.subheader("OpenAI API Key Setup")
+set_openai_api_key()
 
-# Run Workflow button
-if st.button("Run Workflow"):
-    if url:
-        with st.spinner("Running the multi-agent workflow..."):
-            final_report = orchestrate_workflow(url)
-        st.success("Workflow complete!")
-        st.write("### Final Report:")
-        st.write(final_report)
-    else:
-        st.error("Please enter a valid URL.")
+# Initialize Swarm client only after API key is set
+if 'OPENAI_API_KEY' in os.environ and os.environ['OPENAI_API_KEY']:
+    # Initialize the Swarm client after API key is entered
+    client = initialize_swarm_client()
+
+    # Input field for the website URL
+    url = st.text_input("Enter the URL of the website you want to scrape", placeholder="https://example.com")
+
+    # Run Workflow button
+    if st.button("Run Workflow"):
+        if url:
+            with st.spinner("Running the multi-agent workflow..."):
+                final_report = orchestrate_workflow(client, url)
+            st.success("Workflow complete!")
+            st.write("### Final Report:")
+            st.write(final_report)
+        else:
+            st.error("Please enter a valid URL.")
+else:
+    st.warning("Please set your OpenAI API Key to proceed.")
 
 # Footer with credits
 st.write("---")
 st.write("**Developed by Jad Tounsi El Azzoiani**")
-st.write("[GitHub Repo](https://github.com/jadouse5/openai-swarm-webscraper/) | [LinkedIn](https://www.linkedin.com/in/jad-tounsi-el-azzoiani-87499a21a/)")
+st.write("[GitHub Repo](https://github.com/jadouse5) | [LinkedIn](https://www.linkedin.com/in/jad-tounsi-el-azzoiani-87499a21a/)")
