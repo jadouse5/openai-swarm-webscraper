@@ -1,4 +1,4 @@
-# 🔍 OpenAI SWARM Web Scraping and Content Analysis with Multi-Agent System
+# 🔍 OpenAI SWARM Web Scraping Streamlit Web App and Content Analysis with Multi-Agent System
 
 This project implements a multi-agent system that performs web scraping, content analysis, and summary generation using OpenAI's **Swarm framework**. The system automates the extraction and processing of information from websites, making it ideal for applications like content aggregation, market analysis, and research automation.
 
