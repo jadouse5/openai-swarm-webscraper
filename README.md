@@ -35,7 +35,7 @@ This project demonstrates the implementation of a **multi-agent system** capable
 ## Prerequisites
 Before running the project, ensure you have the following dependencies installed:
 
-- **Python 3.x**
+- **Python 3.10+
 - **Streamlit** - for building the interactive web app.
 - **OpenAI API Key** - required for accessing the Swarm framework.
 - **BeautifulSoup** - for web scraping.
@@ -49,24 +49,49 @@ These tools are essential for running the multi-agent system and performing web 
 ## Installation
 
 ### Step 1: Install Python
-Make sure **Python 3.x** is installed. You can download it from the official [Python website](https://www.python.org/downloads/).
+Make sure **Python 3.10+** is installed. You can download it from the official [Python website](https://www.python.org/downloads/).
 
-### Step 2: Install Jupyter (Optional)
-If you want to run or develop the project using Jupyter notebooks, install JupyterLab:
+### Step 2: Set Up a Virtual Environment
+To isolate project dependencies, it's a good practice to create a virtual environment. Follow these steps:
+
+1. Open a terminal and navigate to your project directory.
+2. Create a virtual environment named `myenv`:
+
+   ```bash
+   python -m venv myenv
+   ```
+
+3. Activate the virtual environment:
+
+   - **On macOS/Linux**:
+   
+     ```bash
+     source myenv/bin/activate
+     ```
+   
+   - **On Windows**:
+   
+     ```bash
+     myenv\Scripts\activate
+     ```
+
+### Step 3: Install Jupyter (Optional)
+If you want to run or develop the project using Jupyter notebooks, install JupyterLab within the virtual environment:
 
 ```bash
 pip install jupyterlab
 ```
 
-### Step 3: Install the Required Python Packages
-To install the necessary dependencies for the project, run the following command:
+### Step 4: Install the Required Python Packages
+Once your virtual environment is active, install the necessary dependencies for the project:
 
 ```bash
 pip install streamlit beautifulsoup4 requests python-dotenv
+pip install git+https://github.com/openai/swarm.git
 ```
 
-### Step 4: Set Up the OpenAI API Key
-1. Create a `.env` file in the root directory of the project.
+### Step 5: Set Up the OpenAI API Key
+1. In the project directory, create a `.env` file to store environment variables.
 2. Add the following line to the `.env` file, replacing `your-api-key-here` with your actual OpenAI API key:
 
 ```ini
@@ -77,20 +102,54 @@ OPENAI_API_KEY=your-api-key-here
 
 ## Running the Project
 
-Once you have set up the environment, follow these steps to run the project:
+Once you have set up the environment and installed the required packages, follow these steps to run the project:
 
-1. Open a terminal and navigate to the directory where the project is located.
-2. Start the Streamlit app by running:
+1. **Activate the virtual environment**:
+   
+   - **On macOS/Linux**:
+   
+     ```bash
+     source myenv/bin/activate
+     ```
 
-```bash
-streamlit run app.py
-```
+   - **On Windows**:
+   
+     ```bash
+     myenv\Scripts\activate
+     ```
 
-3. In your browser, go to the local URL provided by Streamlit (typically `http://localhost:8501`).
-4. Enter the URL of the website you want to scrape in the input field and click the **Run Workflow** button to trigger the scraping and analysis process.
-5. View the generated summary directly in the browser once the workflow completes.
+2. **Run the Streamlit app**:
+   
+   Start the Streamlit app by running:
+
+   ```bash
+   streamlit run app.py
+   ```
+
+3. **Access the app in your browser**:
+
+   Once the app is running, go to the local URL provided by Streamlit (typically `http://localhost:8501`).
+
+4. **Run the workflow**:
+
+   - Enter the URL of the website you want to scrape in the input field.
+   - Click the **Run Workflow** button to start the scraping and analysis process.
+   - View the generated summary directly in the browser once the workflow completes.
 
 ---
+
+### Deactivating the Virtual Environment
+When you’re done working on the project, deactivate the virtual environment by running:
+
+```bash
+deactivate
+```
+
+### Key Updates:
+- **Virtual Environment Setup**: Instructions for creating and activating a virtual environment (`myenv`) are added to ensure clean package management.
+- **Deactivation**: Included a section on how to deactivate the environment after use.
+
+This should help ensure the project runs in a controlled environment without conflicts with other Python installations or packages. Let me know if you need any further improvements!
 
 ## Credits
 This project makes use of OpenAI’s **Swarm framework** for multi-agent orchestration. You can learn more about Swarm on GitHub:
