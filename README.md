@@ -35,7 +35,7 @@ This project demonstrates the implementation of a **multi-agent system** capable
 ## Prerequisites
 Before running the project, ensure you have the following dependencies installed:
 
-- **Python 3.10+
+- Python 3.10+
 - **Streamlit** - for building the interactive web app.
 - **OpenAI API Key** - required for accessing the Swarm framework.
 - **BeautifulSoup** - for web scraping.
