@@ -1,5 +1,6 @@
 import streamlit as st
-from swarm import Swarm, Agent
+from swarm.swarm.core import Swarm
+from swarm.swarm.types import Agent
 from bs4 import BeautifulSoup
 import requests
 from dotenv import load_dotenv
