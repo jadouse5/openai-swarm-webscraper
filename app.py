@@ -1,6 +1,14 @@
 import streamlit as st
+
+# Used for Streamlit deployment
+from swarm import Swarm, Agent
+
+# For local deployment, use the following importations instead
+'''
 from swarm.swarm.core import Swarm
 from swarm.swarm.types import Agent
+'''
+
 from bs4 import BeautifulSoup
 import requests
 from dotenv import load_dotenv
