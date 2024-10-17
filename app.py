@@ -5,8 +5,8 @@ from swarm import Swarm, Agent
 
 # For local deployment, use the following importations instead
 '''
-from swarm.swarm.core import Swarm
-from swarm.swarm.types import Agent
+from swarm.core import Swarm
+from swarm.types import Agent
 '''
 
 from bs4 import BeautifulSoup
